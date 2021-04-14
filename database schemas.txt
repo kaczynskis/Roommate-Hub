@@ -1,0 +1,77 @@
+user {
+    username {
+        PRIMARY KEY,
+        type: VARCHAR,
+        length: 50
+    },
+    password {
+        type: VARCHAR,
+        length: 50
+    },
+    room {
+        type: VARCHAR,
+        length: 50
+    }
+}
+
+chores {
+    id {
+        PRIMARY KEY,
+        type: int,
+        length: 8
+    },
+    name {
+        type: VARCHAR,
+        length: 50
+    },
+    description {
+        type: VARCHAR,
+        length: 140
+    },
+    assignedto {
+        FOREIGN KEY REFERENCES user(username),
+        type: VARCHAR,
+        length: 50
+    }
+}
+
+payments {
+    id {
+        PRIMARY KEY,
+        type: int,
+        length: 8
+    },
+    amount {
+        type: VARCHAR,
+        length: 10
+    },
+    borrower {
+        FOREIGN KEY REFERENCES user(username),
+        type: VARCHAR,
+        length: 50
+    },
+    owedto {
+        FOREIGN KEY REFERENCES user(username),
+        type: VARCHAR,
+        length: 50
+    }
+}
+groceries {
+    id {
+        PRIMARY KEY,
+        type: INT,
+        length: 8
+    },
+    name {
+        type: VARCHAR,
+        length: 50
+    },
+    description {
+        type: VARCHAR,
+        length: 140
+    },
+    count {
+        type: INT,
+        length: 5
+    }
+}
