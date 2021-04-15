@@ -12,7 +12,7 @@
 	} 
     //applyToMe will be a WHERE clause in the Home page, and blank everywhere else.
     //The resulting chores will only be those that apply to the logged in user.
-    $sql = "SELECT chorename, description, assignedto FROM chores".$applyToMe;
+    $sql = "SELECT chorename, choredescription, assignedto FROM chores".$applyToMe;
 
     $result = $conn->query($sql);
 
@@ -20,9 +20,9 @@
         //put each row into its own card
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"card\">
-                        <h5>".$row["name"]."</h5>
+                        <h5>".$row["chorename"]."</h5>
                         <label>Description:</label>
-                        <p>".$row["description"]."</p>
+                        <p>".$row["choredescription"]."</p>
                         <p>Assigned to: ".$row["assignedto"]."</p>
             </div>
             ";

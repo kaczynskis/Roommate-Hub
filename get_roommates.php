@@ -14,13 +14,21 @@
     $result = $conn->query($sql);
 
     if (mysqli_num_rows($result) > 0) {
-        //put each row into its own card
-        while($row = $result->fetch_assoc()) {
-            echo "<div class=\"card\">
-                        <h5>".$row["username"]."</h5>
-                        <h6>Room: ".$row["room"]."</h6>
-            </div>
-            ";
+        if ($isDropdown){
+            //creates a dropdown list of options
+            while($row = $result->fetch_assoc()) {
+                echo "<option value=\"".$row["username"]."\">".$row["username"]."</option>\n";
+            }
+        }
+        else {
+            //puts each roommate on their own card
+            while($row = $result->fetch_assoc()) {
+                echo "<div class=\"card\">
+                            <h5>".$row["username"]."</h5>
+                            <h6>Room: ".$row["room"]."</h6>
+                </div>
+                ";
+            }
         }
     }
 
