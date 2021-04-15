@@ -13,9 +13,6 @@
 					<a href="home.php" id="home">Home</a>
 				</li>
 				<li>
-					<a href="my_room.php" id="my_room">My Room</a>
-				</li>
-				<li>
 					<a href="chores.php" id="chores">Chores</a>
 				</li>
 				<li>
@@ -28,8 +25,17 @@
 		</div>
 
 		<div class="column middle">
-			<h2>Sample Text</h2>
-			<p>More Sample Text</p>
+			<newItemContainer>
+				<form method="post" action="addChore.php" id="addChore" style="background-color: #aaa">
+					<legend>Add a chore:</legend>
+
+				</form>
+			</newItemContainer>
+			
+			<?php
+				$applyToMe = "" 
+				include 'get_chores.php';
+			?>
 		</div>
 		
 		<div class="column right">

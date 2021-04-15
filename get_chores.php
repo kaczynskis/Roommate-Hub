@@ -10,15 +10,20 @@
 	if ($conn->connect_error) {
 	  die("Connection failed: " . $conn->connect_error);
 	} 
-    $sql = "SELECT username, room FROM user";
+    //applyToMe will be a WHERE clause in the Home page, and blank everywhere else.
+    //The resulting chores will only be those that apply to the logged in user.
+    $sql = "SELECT chorename, description, assignedto FROM chores".$applyToMe;
+
     $result = $conn->query($sql);
 
     if (mysqli_num_rows($result) > 0) {
         //put each row into its own card
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"card\">
-                        <h5>".$row["username"]."</h5>
-                        <h6>Room: ".$row["room"]."</h6>
+                        <h5>".$row["name"]."</h5>
+                        <label>Description:</label>
+                        <p>".$row["description"]."</p>
+                        <p>Assigned to: ".$row["assignedto"]."</p>
             </div>
             ";
         }

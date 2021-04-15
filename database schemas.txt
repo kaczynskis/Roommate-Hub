@@ -20,11 +20,11 @@ chores {
         type: int,
         length: 8
     },
-    name {
+    chorename {
         type: VARCHAR,
         length: 50
     },
-    description {
+    choredescription {
         type: VARCHAR,
         length: 140
     },
@@ -62,15 +62,15 @@ groceries {
         type: INT,
         length: 8
     },
-    name {
+    itemname {
         type: VARCHAR,
         length: 50
     },
-    description {
+    itemdescription {
         type: VARCHAR,
         length: 140
     },
-    count {
+    itemcount {
         type: INT,
         length: 5
     }

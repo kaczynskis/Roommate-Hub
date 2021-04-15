@@ -18,7 +18,7 @@
 	VALUES ('$username', '$password', '0000')";
 
 	if ($conn->query($sql) === TRUE) {
-	  header("location: home.html");
+	  header("location: home.php");
 	} else {
 	  echo "Error: " . $sql . "<br>" . $conn->error;
 	}

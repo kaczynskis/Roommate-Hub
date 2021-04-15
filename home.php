@@ -17,9 +17,6 @@
 					<a href="home.php" id="home">Home</a>
 				</li>
 				<li>
-					<a href="my_room.php" id="my_room">My Room</a>
-				</li>
-				<li>
 					<a href="chores.php" id="chores">Chores</a>
 				</li>
 				<li>
