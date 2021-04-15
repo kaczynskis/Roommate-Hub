@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	$username=$_POST["name"];
 	$password=$_POST["password"];
 
@@ -18,14 +19,18 @@
 	  die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "INSERT INTO users (username, password, room)
-	VALUES ($username, $password, 0000)";
+	$sql = "INSERT INTO user (username, password, room)
+	VALUES ('$username', '$password', '0000')";
+	$sql = "SELECT * FROM user WHERE username = '".$username."' AND password = '".$password."'";
 
-	if ($conn->query($sql) === TRUE) {
+	$result = $conn->query($sql);
+
+	if (mysqli_num_rows($result) > 0) {
 	  echo "New record created successfully";
-	  $_SESSION["username"] = $username
-	  header("location: home.php")
-	} else {
+	  $_SESSION["username"] = $username;
+	  header("location: home.php");
+	} 
+	else {
 	  echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 

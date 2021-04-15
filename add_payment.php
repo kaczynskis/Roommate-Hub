@@ -1,6 +1,9 @@
 <?php 
-	$username=$_POST["name"];
-	$password=$_POST["password"];
+    session_start();
+	$paymentName=$_POST["amount"];
+	$borrower=$_POST["roommate"];
+    $owedTo=$_SESSION["username"];
+    $paymentDescription = $_POST["paymentDescription"];
 
 	$servername = "localhost";
 	$dbusername = "root";
@@ -14,12 +17,11 @@
 	  die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "INSERT INTO user (username, password, room)
-	VALUES ('$username', '$password', '0000')";
+	$sql = "INSERT INTO payments (amount, borrower, owedto, paymentdescription)
+	VALUES ('$paymentName', '$borrower', '$owedTo', '$paymentDescription')";
 
 	if ($conn->query($sql) === TRUE) {
-	  $_SESSION["username"] = $username;
-	  header("location: home.php");
+	  header("location: payment_tracker.php");
 	} else {
 	  echo "Error: " . $sql . "<br>" . $conn->error;
 	}

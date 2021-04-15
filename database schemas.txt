@@ -17,8 +17,9 @@ user {
 chores {
     id {
         PRIMARY KEY,
+	    AUTO_INCREMENT
         type: int,
-        length: 8
+        length: 11
     },
     chorename {
         type: VARCHAR,
@@ -38,8 +39,9 @@ chores {
 payments {
     id {
         PRIMARY KEY,
+        AUTO_INCREMENT
         type: int,
-        length: 8
+        length: 11
     },
     amount {
         type: VARCHAR,
@@ -54,13 +56,18 @@ payments {
         FOREIGN KEY REFERENCES user(username),
         type: VARCHAR,
         length: 50
+    },
+    paymentDescription {
+	type: VARCHAR,
+	length: 50
     }
 }
 groceries {
     id {
         PRIMARY KEY,
-        type: INT,
-        length: 8
+	    AUTO_INCREMENT
+        type: int,
+        length: 11
     },
     itemname {
         type: VARCHAR,
@@ -73,5 +80,10 @@ groceries {
     itemcount {
         type: INT,
         length: 5
+    }
+    requestedby {
+        FOREIGN KEY REFERENCES user(username),
+        type: VARCHAR,
+        length: 50
     }
 }

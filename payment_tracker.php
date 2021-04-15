@@ -26,12 +26,12 @@
 
 		<div class="column middle">
 			<newItemContainer>
-				<form method="post" action="add_chore.php" id="addChore" style="background-color: #aaa">
-					<h3>Add a chore:</h3>
+				<form method="post" action="add_payment.php" id="addPayment" style="background-color: #aaa">
+					<h3>Add a debt:</h3>
 					<p>
-						<label>Chore Name:</label>
-						<input type="text" name="choreName" required/>
-						<label>Assigned to:</label>
+						<label>Amount owed: $</label>
+						<input type="text" name="amount" required/>
+						<label>borrower:</label>
 						<select name="roommate" id="roommateDropdown" required>
 							<?php
 								$isDropdown = true;
@@ -40,8 +40,8 @@
 						</select>
 					</p>
 					<p>
-						<label for="choreDescription">Description (140 characters):</label>
-						<textarea id="choreDescription" name="choreDescription" rows="3" cols="50"></textarea>
+						<label for="paymentDescription">For what?:</label>
+						<textarea id="paymentDescription" name="paymentDescription" rows="1" cols="50"></textarea>
 					</p>
 					<input type="submit"/>
 				</form>
@@ -49,7 +49,7 @@
 
 			<?php
 				$applyToMe = "";
-				include 'get_chores.php';
+				include 'get_payments.php';
 			?>
 		</div>
 		

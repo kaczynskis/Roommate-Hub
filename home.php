@@ -36,7 +36,10 @@
 		<div class="column right">
 			<h2>Roommate List</h2>
 			
-			<?php include 'get_roommates.php';?>
+			<?php 
+				$isDropdown = false;
+				include 'get_roommates.php';
+			?>
 		</div>
 	</div>
 </body>

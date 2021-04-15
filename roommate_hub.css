@@ -26,6 +26,7 @@ li a:hover {
 
 card {
   border-style: ridge;
+  border-color: #000;
   background-color: #aaa
 }
 
@@ -53,6 +54,7 @@ card {
 /* Middle column */
 .middle {
   width: 50%;
+  overflow: auto;
 }
 
 .row:after {
