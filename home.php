@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <html>
 <head>
 	<link rel="stylesheet" href="roommate_hub.css">
@@ -29,8 +32,25 @@
 		</div>
 
 		<div class="column middle">
-			<h2>Sample Text</h2>
-			<p>More Sample Text</p>
+			<?php
+				echo "<h1 style=\"float: center\">Hello, ".$_SESSION["username"].".</h1>\n<h3 style=\"float: center\">This is everything related to you.</h3>";
+			?>
+			<h2>Payments:</h2>
+			<?php
+				$applyToMe = " WHERE ((borrower = '".$_SESSION["username"]."') OR (owedto = '".$_SESSION["username"]."'))";
+				include 'get_payments.php';
+			?>
+			<h2>Chores:</h2>
+			<?php
+				$applyToMe = " WHERE assignedto = '".$_SESSION["username"]."'";
+				include 'get_chores.php';
+			?>
+			<h2>Groceries:</h2>
+			<?php
+				$applyToMe = " WHERE requestedby = '".$_SESSION["username"]."'";
+				include 'get_groceries.php';
+			?>
+
 		</div>
 		
 		<div class="column right">

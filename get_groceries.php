@@ -11,8 +11,8 @@
 	  die("Connection failed: " . $conn->connect_error);
 	} 
     //applyToMe will be a WHERE clause in the Home page, and blank everywhere else.
-    //The resulting payments will only be those that apply to the logged in user.
-    $sql = "SELECT amount, borrower, owedto, paymentdescription FROM payments".$applyToMe;
+    //The resulting groceries will only be those that apply to the logged in user.
+    $sql = "SELECT itemname, itemdescription, itemcount, requestedby FROM groceries".$applyToMe;
 
     $result = $conn->query($sql);
 
@@ -20,9 +20,10 @@
         //put each row into its own card
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"card\">
-                        <h5>$".$row["amount"]."</h5>
-                        <p>Owed by ".$row["borrower"]." to ".$row["owedto"]."</p>
-                        <p>For: ".$row["paymentdescription"]."</p>
+                        <h5>".$row["itemcount"]." ".$row["itemname"]."(s)</h5>
+                        <label>Description:</label>
+                        <p>".$row["itemdescription"]."</p>
+                        <p>Requested by: ".$row["requestedby"]."</p>
             </div>
             ";
         }

@@ -1,7 +1,9 @@
 <?php 
-	session_start();
-	$username=$_POST["name"];
-	$password=$_POST["password"];
+    session_start();
+	$itemName=$_POST["itemName"];
+	$itemDescription=$_POST["itemDescription"];
+    $itemCount = $_POST["itemCount"];
+    $requestedBy = $_SESSION["username"];
 
 	$servername = "localhost";
 	$dbusername = "root";
@@ -15,12 +17,11 @@
 	  die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "INSERT INTO user (username, password, room)
-	VALUES ('$username', '$password', '0000')";
+	$sql = "INSERT INTO groceries (itemname, itemdescription, itemcount, requestedby)
+	VALUES ('$itemName', '$itemDescription', '$itemCount', '$requestedBy')";
 
 	if ($conn->query($sql) === TRUE) {
-	  $_SESSION["username"] = $username;
-	  header("location: home.php");
+	  header("location: groceries.php");
 	} else {
 	  echo "Error: " . $sql . "<br>" . $conn->error;
 	}

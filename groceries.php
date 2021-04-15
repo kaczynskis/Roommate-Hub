@@ -3,7 +3,7 @@
 	<link rel="stylesheet" href="roommate_hub.css">
 </head>
 <body>
-	<h1 id="title">Payment Tracker</h1>
+	<h1 id="title">Groceries</h1>
 
 	<div class="row">
 		<div class="column left" >
@@ -26,22 +26,17 @@
 
 		<div class="column middle">
 			<newItemContainer>
-				<form method="post" action="add_payment.php" id="addPayment" style="background-color: #aaa">
-					<h3>Add a debt:</h3>
+				<form method="post" action="add_groceries.php" id="addGroceries" style="background-color: #aaa">
+					<h3>Add groceries:</h3>
 					<p>
-						<label>Amount owed: $</label>
-						<input type="text" name="amount" required/>
-						<label>borrower:</label>
-						<select name="roommate" id="roommateDropdown" required>
-							<?php
-								$isDropdown = true;
-								include 'get_roommates.php';
-							?>
-						</select>
+						<label>Item name:</label>
+						<input type="text" name="itemName" required/>
+						<label>Count:</label>
+                        <input type="number" name="itemCount" required/>
 					</p>
 					<p>
-						<label for="paymentDescription">For what?:</label>
-						<textarea id="paymentDescription" name="paymentDescription" rows="1" cols="50"></textarea>
+						<label for="itemDescription">Description (140 characters):</label>
+						<textarea id="itemDescription" name="itemDescription" rows="3" cols="50"></textarea>
 					</p>
 					<input type="submit"/>
 				</form>
@@ -49,7 +44,7 @@
 
 			<?php
 				$applyToMe = "";
-				include 'get_payments.php';
+				include 'get_groceries.php';
 			?>
 		</div>
 		
